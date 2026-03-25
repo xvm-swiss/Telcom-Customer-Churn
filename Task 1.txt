@@ -1,0 +1,9 @@
+Task 1 ( classification) : 
+
+- Implement ML system to predict customers churn ( churn = Kündigung )
+- identify citical different error types FP & TP 
+  FP = False Positive
+  Ein TP = True Positive ist kein Fehler, sondern ein Erfolg
+- What metrics to focus on precision, recall, f1_score and why
+
+Upload your work on github

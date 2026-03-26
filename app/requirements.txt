@@ -10,5 +10,7 @@ nbformat
 wordcloud
 joblib
 scikit-learn
-dotenv
+python-dotenv
+google-generativeai
+
 

@@ -12,17 +12,3 @@ joblib
 scikit-learn
 dotenv
 
-=======
-numpy
-streamlit
-pandas
-matplotlib
-matplotlib
-seaborn
-plotly
-nbformat
-wordcloud
-joblib
-scikit-learn
-
->>>>>>> ad1fc06fbf01c8613f3a39a5ae2af12bfa1c9e41

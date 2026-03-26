@@ -23,6 +23,48 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 
+
+# Chat boot Gemini
+
+from google import genai
+import os
+
+# 1. API KEY laden (Streamlit sucht lokal in .streamlit/secrets.toml)
+# Wenn du es auf GitHub/Streamlit Cloud hochlädst, musst du den Key dort in den Settings eintragen!
+try:
+    api_key = st.secrets["GEMINI_API_KEY"]
+except KeyError:
+    st.error("Fehler: GEMINI_API_KEY nicht in den Secrets gefunden!")
+    st.stop()
+
+client = genai.Client(api_key=api_key)
+
+st.header('Our First Chatbot')
+
+# System Instruction definieren
+system_prompt = """You are a helpful AI assistant for a Parkinson's Disease (PD) Detection web application...
+(Dein restlicher Text hier)"""
+
+user_input = st.text_area('Enter your text')
+
+if st.button('Send'):
+    if user_input:
+        response = client.models.generate_content(
+            model="gemini-2.0-flash", # Tipp: Nutze die aktuelle stabile Version
+            contents=user_input,
+            config={
+                'system_instruction': system_prompt
+            }
+        )
+        st.write(response.text)
+    else:
+        st.warning("Please enter some text first.")
+
+
+st.divider() # Erzeugt eine saubere, graue Trennlinie
+
+
+
 df = pd.read_csv( 'data/preprocessing data/preprocessing_data.csv')
 
 
@@ -55,10 +97,10 @@ st.divider() # Erzeugt eine saubere, graue Trennlinie
 # Part 3
 box_21, box_22, box_23, box_24, box_25 = st.columns(5)
 
+box_3, = st.columns( 1 )
 
 st.divider() # Erzeugt eine saubere, graue Trennlinie
 
-box_3, = st.columns( 1 )
 
 # Row 1
 genders = box_11.multiselect( 'Gender:',
